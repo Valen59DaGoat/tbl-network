@@ -1,0 +1,327 @@
+/* ============================================
+   TBL — Twitter Baseball League
+   Design: stadium scoreboard. Dark field-green
+   panels, amber digit readouts, chalk-white type.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap');
+
+:root{
+  --field:      #0f3324;   /* deep field green — primary dark bg */
+  --field-2:    #0a2419;   /* darker panel shade */
+  --chalk:      #f5f2e6;   /* chalk white — primary text on dark */
+  --dirt:       #b06b34;   /* infield dirt — warm accent */
+  --amber:      #f2b705;   /* scoreboard digit amber — highlight/CTA */
+  --foul:       #c1432b;   /* foul line red — loss/alert */
+  --ink:        #16221b;   /* body text on light bg */
+  --line:       rgba(245,242,230,0.14);
+
+  --display: 'Teko', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'Roboto Mono', monospace;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  background: var(--chalk);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.5;
+}
+
+a{ color: inherit; text-decoration: none; }
+img{ max-width: 100%; display: block; }
+
+/* ---------- Scoreboard nav ribbon ---------- */
+.tbl-nav{
+  background: var(--field);
+  border-bottom: 4px solid var(--amber);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.tbl-nav-inner{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.tbl-brand{
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: 0.03em;
+  color: var(--chalk);
+  white-space: nowrap;
+}
+.tbl-brand span{ color: var(--amber); }
+.tbl-links{
+  display: flex;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tbl-links a{
+  color: var(--chalk);
+  opacity: 0.75;
+  padding: 0.45rem 0.65rem;
+  border-radius: 3px;
+}
+.tbl-links a:hover{ opacity: 1; }
+.tbl-links a.active{
+  opacity: 1;
+  color: var(--field);
+  background: var(--amber);
+}
+
+/* ---------- Page shell ---------- */
+main{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+.page-head{
+  margin-bottom: 1.5rem;
+}
+.eyebrow{
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dirt);
+}
+h1{
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 2.6rem;
+  letter-spacing: 0.01em;
+  margin: 0.1rem 0 0.3rem;
+  color: var(--field);
+}
+h2{
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--field);
+  margin: 1.6rem 0 0.6rem;
+}
+p.lede{ color: #445; max-width: 60ch; }
+
+/* ---------- Scoreboard panel (signature element) ---------- */
+.scorepanel{
+  background: var(--field);
+  color: var(--chalk);
+  border-radius: 6px;
+  padding: 1.1rem 1.2rem;
+  border-bottom: 4px solid var(--amber);
+}
+.scorepanel .label{
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.4rem;
+}
+.matchup{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.team-slot{ text-align: center; flex: 1; min-width: 90px; }
+.team-slot .abbr{
+  font-family: var(--display);
+  font-size: 2.2rem;
+  letter-spacing: 0.03em;
+}
+.team-slot .record{
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: rgba(245,242,230,0.65);
+}
+.matchup .vs{
+  font-family: var(--mono);
+  color: var(--amber);
+  font-size: 0.85rem;
+}
+
+/* ---------- Tile grid (home quick links) ---------- */
+.tiles{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+.tile{
+  background: #fff;
+  border: 1px solid rgba(15,51,36,0.15);
+  border-left: 4px solid var(--dirt);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  font-family: var(--display);
+  font-size: 1.25rem;
+  color: var(--field);
+  letter-spacing: 0.02em;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.tile:hover{ border-left-color: var(--amber); transform: translateX(2px); }
+.tile small{
+  display: block;
+  font-family: var(--body);
+  font-size: 0.78rem;
+  color: #667;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 0.15rem;
+}
+
+/* ---------- Standings / data tables ---------- */
+table.stats{
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  background: #fff;
+}
+table.stats th{
+  background: var(--field);
+  color: var(--chalk);
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 0.7rem;
+  text-align: left;
+}
+table.stats td{
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid rgba(15,51,36,0.1);
+}
+table.stats tbody tr:nth-child(odd){ background: rgba(15,51,36,0.035); }
+table.stats td.num{ text-align: right; }
+table.stats td.team-name{ font-family: var(--body); font-weight: 600; }
+
+/* ---------- Cards (teams, rules, rankings) ---------- */
+.card{
+  background: #fff;
+  border: 1px solid rgba(15,51,36,0.12);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.75rem;
+}
+.card h3{
+  font-family: var(--display);
+  font-size: 1.35rem;
+  color: var(--field);
+  margin: 0 0 0.3rem;
+  letter-spacing: 0.02em;
+}
+.rank-badge{
+  display: inline-block;
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--field);
+  background: var(--amber);
+  border-radius: 3px;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- Forms (login / dashboard) ---------- */
+form.tbl-form{
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 420px;
+}
+form.tbl-form.wide{ max-width: 640px; }
+form.tbl-form label{
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dirt);
+}
+form.tbl-form input, form.tbl-form textarea, form.tbl-form select{
+  font-family: var(--body);
+  font-size: 1rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(15,51,36,0.25);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+}
+form.tbl-form textarea{ resize: vertical; min-height: 70px; }
+.row-2{ display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+
+button, .btn{
+  font-family: var(--display);
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: var(--field);
+  color: var(--chalk);
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  width: fit-content;
+}
+button:hover{ background: #164632; }
+button.amber{ background: var(--amber); color: var(--field); }
+button.danger{ background: var(--foul); color: var(--chalk); }
+button:focus-visible, a:focus-visible, input:focus-visible{
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+.msg{ font-family: var(--mono); font-size: 0.85rem; margin-top: 0.4rem; }
+.msg.error{ color: var(--foul); }
+.msg.ok{ color: #1f7a4d; }
+
+.dash-tabs{ display: flex; gap: 0.4rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+.dash-tabs button{
+  background: #fff;
+  color: var(--field);
+  border: 1px solid rgba(15,51,36,0.25);
+}
+.dash-tabs button.active{ background: var(--field); color: var(--chalk); }
+.dash-section{ display: none; }
+.dash-section.active{ display: block; }
+.list-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.list-row .actions{ display: flex; gap: 0.4rem; }
+.list-row .actions button{ font-size: 0.85rem; padding: 0.35rem 0.6rem; }
+
+footer{
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: #667;
+  padding: 2rem 1rem 3rem;
+}
+
+@media (max-width: 560px){
+  h1{ font-size: 2.1rem; }
+  .team-slot .abbr{ font-size: 1.6rem; }
+  .row-2{ grid-template-columns: 1fr; }
+}

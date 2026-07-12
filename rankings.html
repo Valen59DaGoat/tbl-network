@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rankings — TBL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="tbl-nav">
+  <div class="tbl-nav-inner">
+    <div class="tbl-brand">T<span>B</span>L</div>
+    <div class="tbl-links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="standings.html">Standings</a>
+      <a href="teams.html">Teams</a>
+      <a href="rankings.html" class="active">Rankings</a>
+      <a href="rules.html">Rules</a>
+      <a href="login.html">Commissioner</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Commissioner's Take</div>
+    <h1>Power Rankings</h1>
+    <p class="lede">Updated by the commissioner each week.</p>
+  </div>
+
+  <div id="rankings-list">Loading…</div>
+</main>
+
+<footer>TBL Network · Built for GitHub Pages</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>renderRankings();</script>
+</body>
+</html>

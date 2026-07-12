@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standings — TBL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="tbl-nav">
+  <div class="tbl-nav-inner">
+    <div class="tbl-brand">T<span>B</span>L</div>
+    <div class="tbl-links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="standings.html" class="active">Standings</a>
+      <a href="teams.html">Teams</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="rules.html">Rules</a>
+      <a href="login.html">Commissioner</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow">League Order</div>
+    <h1>Standings</h1>
+    <p class="lede">Sorted by winning percentage.</p>
+  </div>
+
+  <table class="stats">
+    <thead>
+      <tr><th>Team</th><th>W</th><th>L</th><th>Pct</th></tr>
+    </thead>
+    <tbody id="standings-body">
+      <tr><td colspan="4">Loading…</td></tr>
+    </tbody>
+  </table>
+</main>
+
+<footer>TBL Network · Built for GitHub Pages</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>renderStandings();</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — TBL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="tbl-nav">
+  <div class="tbl-nav-inner">
+    <div class="tbl-brand">T<span>B</span>L</div>
+    <div class="tbl-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="#" onclick="handleLogout(); return false;">Log out</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Commissioner Only</div>
+    <h1>Dashboard</h1>
+    <p class="lede">Edits here update the public site immediately.</p>
+  </div>
+
+  <div class="dash-tabs">
+    <button id="btn-teams" class="active" onclick="showDashTab('teams')">Teams</button>
+    <button id="btn-games" onclick="showDashTab('games')">Schedule</button>
+    <button id="btn-rankings" onclick="showDashTab('rankings')">Rankings</button>
+    <button id="btn-rules" onclick="showDashTab('rules')">Rules</button>
+  </div>
+
+  <!-- TEAMS -->
+  <section id="tab-teams" class="dash-section active">
+    <h2>Add / Edit Team</h2>
+    <form class="tbl-form wide" id="team-form" onsubmit="dashAddOrUpdateTeam(event)">
+      <input type="hidden" id="team-id">
+      <label for="team-name">Team name</label>
+      <input id="team-name" required>
+      <label for="team-abbr">Abbreviation</label>
+      <input id="team-abbr" maxlength="4" required>
+      <div class="row-2">
+        <div>
+          <label for="team-wins">Wins</label>
+          <input id="team-wins" type="number" min="0" value="0">
+        </div>
+        <div>
+          <label for="team-losses">Losses</label>
+          <input id="team-losses" type="number" min="0" value="0">
+        </div>
+      </div>
+      <label for="team-blurb">Blurb (optional)</label>
+      <textarea id="team-blurb"></textarea>
+      <button type="submit" class="amber">Save Team</button>
+      <div id="team-msg" class="msg"></div>
+    </form>
+    <h2>All Teams</h2>
+    <div id="dash-teams-list">Loading…</div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="tab-games" class="dash-section">
+    <h2>Add / Edit Game</h2>
+    <form class="tbl-form wide" id="game-form" onsubmit="dashAddOrUpdateGame(event)">
+      <input type="hidden" id="game-id">
+      <div class="row-2">
+        <div>
+          <label for="game-week">Week</label>
+          <input id="game-week" type="number" min="1">
+        </div>
+        <div>
+          <label for="game-date">Date</label>
+          <input id="game-date" type="date">
+        </div>
+      </div>
+      <div class="row-2">
+        <div>
+          <label for="game-away">Away team</label>
+          <input id="game-away" required>
+        </div>
+        <div>
+          <label for="game-home">Home team</label>
+          <input id="game-home" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div>
+          <label for="game-away-score">Away score</label>
+          <input id="game-away-score" type="number">
+        </div>
+        <div>
+          <label for="game-home-score">Home score</label>
+          <input id="game-home-score" type="number">
+        </div>
+      </div>
+      <label for="game-status">Status</label>
+      <select id="game-status">
+        <option value="scheduled">Scheduled</option>
+        <option value="live">Live</option>
+        <option value="final">Final</option>
+      </select>
+      <button type="submit" class="amber">Save Game</button>
+      <div id="game-msg" class="msg"></div>
+    </form>
+    <h2>All Games</h2>
+    <div id="dash-games-list">Loading…</div>
+  </section>
+
+  <!-- RANKINGS -->
+  <section id="tab-rankings" class="dash-section">
+    <h2>Add / Edit Ranking</h2>
+    <form class="tbl-form wide" id="rank-form" onsubmit="dashAddOrUpdateRanking(event)">
+      <input type="hidden" id="rank-id">
+      <div class="row-2">
+        <div>
+          <label for="rank-num">Rank #</label>
+          <input id="rank-num" type="number" min="1" required>
+        </div>
+        <div>
+          <label for="rank-team">Team</label>
+          <input id="rank-team" required>
+        </div>
+      </div>
+      <label for="rank-note">Note (optional)</label>
+      <textarea id="rank-note"></textarea>
+      <button type="submit" class="amber">Save Ranking</button>
+      <div id="rank-msg" class="msg"></div>
+    </form>
+    <h2>All Rankings</h2>
+    <div id="dash-rankings-list">Loading…</div>
+  </section>
+
+  <!-- RULES -->
+  <section id="tab-rules" class="dash-section">
+    <h2>Add / Edit Rule</h2>
+    <form class="tbl-form wide" id="rule-form" onsubmit="dashAddOrUpdateRule(event)">
+      <input type="hidden" id="rule-id">
+      <label for="rule-order">Display order</label>
+      <input id="rule-order" type="number" min="0" value="0">
+      <label for="rule-title">Title</label>
+      <input id="rule-title" required>
+      <label for="rule-body">Body</label>
+      <textarea id="rule-body" required></textarea>
+      <button type="submit" class="amber">Save Rule</button>
+      <div id="rule-msg" class="msg"></div>
+    </form>
+    <h2>All Rules</h2>
+    <div id="dash-rules-list">Loading…</div>
+  </section>
+</main>
+
+<footer>TBL Network · Built for GitHub Pages</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+  (async () => {
+    const session = await requireAuth();
+    if (!session) return;
+    dashLoadTeams();
+    dashLoadGames();
+    dashLoadRankings();
+    dashLoadRules();
+  })();
+</script>
+</body>
+</html>

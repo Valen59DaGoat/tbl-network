@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TBL — Twitter Baseball League</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="tbl-nav">
+  <div class="tbl-nav-inner">
+    <div class="tbl-brand">T<span>B</span>L</div>
+    <div class="tbl-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="standings.html">Standings</a>
+      <a href="teams.html">Teams</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="rules.html">Rules</a>
+      <a href="login.html">Commissioner</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Twitter Baseball League</div>
+    <h1>Where the TBL plays it out.</h1>
+    <p class="lede">Schedules, standings, team info, rankings, and the rulebook — all in one place.</p>
+  </div>
+
+  <div id="home-scorepanel" class="scorepanel">
+    <div class="label">Loading Game Center…</div>
+  </div>
+
+  <div class="tiles">
+    <a class="tile" href="schedule.html">Schedule<small>Every matchup, week by week</small></a>
+    <a class="tile" href="standings.html">Standings<small>Current league order</small></a>
+    <a class="tile" href="teams.html">Teams<small>Rosters &amp; records</small></a>
+    <a class="tile" href="rankings.html">Rankings<small>This week's power rankings</small></a>
+    <a class="tile" href="rules.html">Rules<small>How the league runs</small></a>
+  </div>
+</main>
+
+<footer>TBL Network · Built for GitHub Pages</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>renderHomeScoreboard();</script>
+</body>
+</html>

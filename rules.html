@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rules — TBL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="tbl-nav">
+  <div class="tbl-nav-inner">
+    <div class="tbl-brand">T<span>B</span>L</div>
+    <div class="tbl-links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="standings.html">Standings</a>
+      <a href="teams.html">Teams</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="rules.html" class="active">Rules</a>
+      <a href="login.html">Commissioner</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow">The Rulebook</div>
+    <h1>Rules</h1>
+    <p class="lede">How the TBL is run.</p>
+  </div>
+
+  <div id="rules-list">Loading…</div>
+</main>
+
+<footer>TBL Network · Built for GitHub Pages</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>renderRules();</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commissioner Login — TBL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="tbl-nav">
+  <div class="tbl-nav-inner">
+    <div class="tbl-brand">T<span>B</span>L</div>
+    <div class="tbl-links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="standings.html">Standings</a>
+      <a href="teams.html">Teams</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="rules.html">Rules</a>
+      <a href="login.html" class="active">Commissioner</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Private</div>
+    <h1>Commissioner Login</h1>
+    <p class="lede">Sign in to update schedules, standings, teams, rankings, and rules.</p>
+  </div>
+
+  <form class="tbl-form" id="login-form" onsubmit="handleLogin(event)">
+    <label for="login-email">Email</label>
+    <input type="email" id="login-email" required>
+    <label for="login-password">Password</label>
+    <input type="password" id="login-password" required>
+    <button type="submit">Log in</button>
+    <div id="login-msg" class="msg"></div>
+  </form>
+</main>
+
+<footer>TBL Network · Built for GitHub Pages</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
