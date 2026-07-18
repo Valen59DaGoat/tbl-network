@@ -69,13 +69,13 @@ async function renderHomeScoreboard(){
     <div class="label">${isFinal ? "Final" : "Next Up"} · Week ${upcoming.week ?? "-"}</div>
     <div class="matchup">
       <div class="team-slot">
-        ${logoImg(awayLogo, upcoming.away_team, 44)}
+        ${logoImg(awayLogo, upcoming.away_team, 88)}
         <div class="abbr">${escapeHtml(upcoming.away_team)}</div>
         <div class="record">${isFinal ? upcoming.away_score : ""}</div>
       </div>
       <div class="vs">${isFinal ? "FINAL" : upcoming.game_date || "TBD"}</div>
       <div class="team-slot">
-        ${logoImg(homeLogo, upcoming.home_team, 44)}
+        ${logoImg(homeLogo, upcoming.home_team, 88)}
         <div class="abbr">${escapeHtml(upcoming.home_team)}</div>
         <div class="record">${isFinal ? upcoming.home_score : ""}</div>
       </div>
