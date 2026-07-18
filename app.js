@@ -171,7 +171,7 @@ async function renderRankings(){
     <div class="card">
       <h3>
         <span class="rank-badge">#${r.rank}</span>
-        ${logoImg(logos[(r.team||"").toLowerCase()], r.team, 50)}
+        ${logoImg(logos[(r.team||"").toLowerCase()], r.team, 70)}
         ${escapeHtml(r.team)}
       </h3>
       ${r.note ? `<p>${escapeHtml(r.note)}</p>` : ""}
