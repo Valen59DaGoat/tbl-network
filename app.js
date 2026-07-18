@@ -98,7 +98,7 @@ async function renderStandings(){
 
   el.innerHTML = teams.map(t => `
     <tr>
-      <td class="team-name">${logoImg(t.logo_url, t.name, 60)} ${escapeHtml(t.name)} <span style="opacity:.55">(${escapeHtml(t.abbr)})</span></td>
+      <td class="team-name">${logoImg(t.logo_url, t.name, 100)} ${escapeHtml(t.name)} <span style="opacity:.55">(${escapeHtml(t.abbr)})</span></td>
       <td class="num">${t.wins}</td>
       <td class="num">${t.losses}</td>
       <td class="num">${pct(t.wins, t.losses)}</td>
