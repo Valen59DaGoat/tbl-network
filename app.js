@@ -43,7 +43,7 @@ async function buildLogoMap(){
 
 function logoImg(url, alt, size){
   if (!url) return "";
-  const s = size || 60; // increased default logo size
+  const s = size || 80; // increased default logo size
   return `<img src="${url}" alt="${escapeHtml(alt || "")}" class="team-logo" style="width:${s}px;height:${s}px;">`;
 }
 
